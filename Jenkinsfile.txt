@@ -1,29 +1,27 @@
 pipeline {
     agent any
-         stage('SCM checkout'){
+    tools {
+        terraform 'terraform2'
+    }
+    stages{
+        stage('SCM checkout'){
              steps{
-            git 'https://github.com/shawla4real/Module-terraform.git'
+            git 'https://github.com/shawla4real/Module-terraform.tf'
          }
     }
         stage('Terraform Init'){
          steps{
-             sh '''terraform init
-''' 
+             sh '''terraform init''' 
          }   
-        }
+    }
         stage('Terraform plan'){
          steps{
-             sh '''terraform plan
-''' 
+             sh '''terraform plan''' 
          }   
-        }
-        stage('Terraform apply'){
-         steps{
-             sh '''terraform apply --auto-approve
-'''  
-         }   
-        }
     }
-    
-             
-                        
+        stage('Terraform state'){
+         steps{
+             sh '''terraform "${terraform_state}" --auto-approve'''  
+            }
+         }   
+    }
