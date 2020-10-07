@@ -11,7 +11,7 @@ pipeline {
     }
         stage('cd to Dev'){
          steps{
-             sh 'cd /home/tomcat/.jenkins/workspace/modtest/dev' 
+             sh 'cd /home/tomcat/.jenkins/workspace/modtest/dev && ls -l' 
          }   
     }
         stage('Terraform Init'){
