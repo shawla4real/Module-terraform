@@ -16,7 +16,11 @@ pipeline {
     }
         stage('Terraform Init'){
          steps{
-             sh '''terraform init''' 
+             '''
+             sh
+             cd /home/tomcat/.jenkins/workspace/modtest/dev
+             terraform init 
+             '''
          }   
     }
         stage('Terraform plan'){
