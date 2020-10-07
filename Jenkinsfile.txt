@@ -34,7 +34,8 @@ pipeline {
          steps{
               sh """
              cd /home/tomcat/.jenkins/workspace/modtest/dev
-             terraform "${terraform_state}" --auto-approve"""
+             terraform "${terraform_state}" --auto-approve
+             """
             }
          }   
       }
