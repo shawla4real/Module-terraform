@@ -9,14 +9,14 @@ data "aws_availability_zones" "available" {
                 }
 
 module "solavpc" {
-  source = "./Module-terraform/modules/vpc/"
+  source = "/home/tomcat/.jenkins/workspace/modtest/modules/vpc/"
   vpc_cidr = "10.0.0.0/16"
   tenancy = "default"
   vpc_id = "${module.solavpc.vpc_id}"
   subnet_cidr = "10.0.1.0/24"
 }
 module "solaec2" {
-  source = "./Module-terraform/modules/ec2/"
+  source = "/home/tomcat/.jenkins/workspace/modtest/modules/ec2/"
   ec2_count = 1
   instance_type = "t2.micro"
   subnet_id = "${module.solavpc.subnet_id}"
