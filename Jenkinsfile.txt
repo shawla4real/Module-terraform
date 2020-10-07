@@ -32,7 +32,9 @@ pipeline {
     }
         stage('Terraform state'){
          steps{
-             sh '''terraform "${terraform_state}" --auto-approve'''  
+              sh """
+             cd /home/tomcat/.jenkins/workspace/modtest/dev
+             terraform "${terraform_state}" --auto-approve"""
             }
          }   
       }
