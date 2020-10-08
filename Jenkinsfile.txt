@@ -1,3 +1,4 @@
+properties([parameters([choice(choices: ['', 'apply', 'destroy'], description: 'terraform state selection', name: 'terraform_state')])])
 pipeline {
     agent any
     tools {
