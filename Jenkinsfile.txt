@@ -1,4 +1,3 @@
-properties([gitLabConnection(''), parameters([choice(choices: ['', 'apply', 'destroy'], description: 'configure parameters ', name: 'terraform_state')])])
 pipeline {
     agent any
     tools {
