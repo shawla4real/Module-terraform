@@ -11,13 +11,13 @@ pipeline {
     }
         stage('cd to Dev'){
          steps{
-             sh 'cd /home/tomcat/.jenkins/workspace/modtest/dev && ls -l' 
+             sh '/root/.jenkins/workspace/ndukaku/dev && ls -l' 
          }   
     }
         stage('Terraform Init'){
          steps{
              sh """    
-             cd /home/tomcat/.jenkins/workspace/modtest/dev
+             cd /root/.jenkins/workspace/ndukaku/dev
              terraform init 
              """
          }   
@@ -25,7 +25,7 @@ pipeline {
         stage('Terraform plan'){
          steps{
              sh """
-             cd /home/tomcat/.jenkins/workspace/modtest/dev
+             cd /root/.jenkins/workspace/ndukaku/dev
              terraform plan
              """
          }   
@@ -33,7 +33,7 @@ pipeline {
         stage('Terraform state'){
          steps{
               sh """
-             cd /home/tomcat/.jenkins/workspace/modtest/dev
+             cd /root/.jenkins/workspace/ndukaku/dev
              terraform "${terraform_state}" --auto-approve
              """
             }
