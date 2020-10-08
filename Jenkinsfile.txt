@@ -1,3 +1,4 @@
+properties([gitLabConnection(''), parameters([choice(choices: ['', 'apply', 'destroy'], description: 'configure parameters ', name: 'terraform_state')])])
 pipeline {
     agent any
     tools {
@@ -8,11 +9,6 @@ pipeline {
              steps{
            git credentialsId: '5711feab-cdf4-4169-93db-d20d1864b81e', url: 'https://github.com/shawla4real/Module-terraform.git'
          }
-    }
-        stage('cd to Dev'){
-         steps{
-             sh '/root/.jenkins/workspace/ndukaku/dev && ls -l' 
-         }   
     }
         stage('Terraform Init'){
          steps{
